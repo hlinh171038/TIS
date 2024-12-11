@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label>Favorite Color:</label><br>
+        <input type="radio" id="red" name="color" value="red">
+        <label for="red">Red</label>
+        <input type="radio" id="blue" name="color" value="blue">
+        <label for="blue">Blue</label>
+        <input type="radio" id="green" name="color" value="green">
+        <label for="green">Green</label><br><br>
+
+        <label for="feedback">Feedback:</label><br>
+        <textarea id="feedback" name="feedback" rows="5" cols="40"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Survey Results</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Favorite Color</th>
+            <th>Feedback</th>
+        </tr>
+        </table>
+
+    <script>
+        // JavaScript to handle form submission and display results
+        const form = document.querySelector('form');
+        const table = document.querySelector('table');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const color = document.querySelector('input[name="color"]:checked').value;
+            const feedback = document.getElementById('feedback').value;
+
+            const newRow = table.insertRow(-1);
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = email;
+            newRow.insertCell(2).textContent = color;
+            newRow.insertCell(3).textContent = feedback;
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
